@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Магазин</title>
+</head>
+
+<body>
+
+    <h1>Список продуктов</h1>
+    <br>
+    <h3>Сортировать продукты:</h3>
+    <a href="?sort_method=asc">по возрастанию цены</a><br><br>
+    <a href="?sort_method=desc">по убыванию цены</a><br><br>
+
+    <h3>Показать:</h3>
+    <a href="?sort_method=max">самый дорогой продукт</a><br><br>
+    <a href="?sort_method=min">самый дешёвый продукт</a><br>
+
+    <p th:each="product : ${productsList}" text="id: ${product.id},  title: ${product.title}, price: ${product.price}" />
+
+</body>
+</html>

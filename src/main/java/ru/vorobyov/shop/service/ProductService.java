@@ -10,31 +10,19 @@ import java.util.List;
 @Service
 public class ProductService {
     
+    @Autowired
     private ProductRepository productRepository;
     
-    @Autowired
-    public void setProductRepository(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public List<Product> fromMin(double min) {
+        return productRepository.findByPriceAfter(min);
     }
-    
-//    public List<Product> findAllOrderByPriceAsc() {
-//        return productRepository.findAllOrderByPriceAsc();
-//    }
-//
-//    public List<Product> findAllOrderByPriceDesc() {
-//        return productRepository.findAllOrderByPriceDesc();
-//    }
-//
-//    public List<Product> findMin() {
-//        return productRepository.findAllOrderByPriceAscLimit1();
-//    }
-//
-//    public List<Product> findMax() {
-//        return productRepository.findAllOrderByPriceDescLimit1();
-//    }
-    
-    public List<Product> findAll() {
-        return productRepository.findAll();
+
+    public List<Product> toMax(double max) {
+        return productRepository.findByPriceBefore(max);
+    }
+
+    public List<Product> fromMinToMax(double min, double max) {
+        return productRepository.findByPriceAfterAndPriceBefore(min, max);
     }
     
 }

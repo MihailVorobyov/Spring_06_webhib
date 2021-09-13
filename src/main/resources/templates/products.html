@@ -12,14 +12,17 @@
     <h1>Список продуктов</h1>
     <br>
     <h3>Сортировать продукты:</h3>
-    <a href="?sort_method=asc">по возрастанию цены</a><br><br>
-    <a href="?sort_method=desc">по убыванию цены</a><br><br>
+    <form method="get">
+        <label>Больше минимальной цены</label><input type="radio" name="sort_method" value="fromMin"><br>
+        <label>Меньше максимальной цены</label><input type="radio" name="sort_method" value="toMax"><br>
+        <label>Между минимальной и максимальной ценой</label><input type="radio" name="sort_method" value="fromMinToMax"><br>
 
-    <h3>Показать:</h3>
-    <a href="?sort_method=max">самый дорогой продукт</a><br><br>
-    <a href="?sort_method=min">самый дешёвый продукт</a><br>
+        <label>min</label><input type="number" name="min" value=""/><br>
+        <label>max</label><input type="number" name="max" value=""/><br>
+        <input class="btn btn_default" type="submit" value="отправить">
+    </form>
 
-    <p th:each="product : ${productsList}" text="id: ${product.id},  title: ${product.title}, price: ${product.price}" />
+    <p th:each="product : ${productList}">[[${product.id}]] [[${product.title}]] - [[${product.price}]] р</p>
 
 </body>
 </html>

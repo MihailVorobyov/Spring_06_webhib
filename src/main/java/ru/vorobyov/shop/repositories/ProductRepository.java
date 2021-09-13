@@ -1,22 +1,20 @@
 package ru.vorobyov.shop.repositories;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.vorobyov.shop.entities.Product;
 
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends PagingAndSortingRepository<Product, Long> {
+@Transactional
+public interface ProductRepository extends JpaRepository<Product, Long> {
 	
-	List<Product> findAll();
+	List<Product>  findByPriceAfter(double max);
 	
-//	List<Product> findAllOrderByPriceAsc();
-//
-//	List<Product> findAllOrderByPriceDesc();
-//
-//	List<Product> findAllOrderByPriceAscLimit1();
-//
-//	List<Product> findAllOrderByPriceDescLimit1();
+	List<Product> findByPriceBefore(double min);
+	
+	List<Product> findByPriceAfterAndPriceBefore(double min, double max);
 	
 }

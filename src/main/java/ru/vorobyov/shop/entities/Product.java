@@ -12,9 +12,9 @@ public class Product {
 	
 	private String title;
 	
-	private float price;
+	private double price;
 	
-	public Product(String title, float price) {
+	public Product(String title, double price) {
 		this.title = title;
 		this.price = price;
 	}
@@ -30,7 +30,7 @@ public class Product {
 		return title;
 	}
 	
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 	
@@ -38,7 +38,7 @@ public class Product {
 		this.title = title;
 	}
 	
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 }
